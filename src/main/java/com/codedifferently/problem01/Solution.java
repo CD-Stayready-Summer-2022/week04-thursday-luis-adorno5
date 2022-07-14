@@ -16,8 +16,28 @@ public class Solution {
      * @return
      */
     public String findLongestConsecutiveSet(Integer[] allNumbers){
-        Set<Integer> ordered = new TreeSet<>(List.of(allNumbers));
+        Set<Integer> sortedNums = new TreeSet<>(List.of(allNumbers));
+        int longestStreak = 0;
+        String currentLongest = "";
+        for(int num : sortedNums){
+            if(!sortedNums.contains(num-1)){
+                int currentNum = num;
+                int streak = 1;
+                String currentArray = "{"+currentNum;
+                while(sortedNums.contains(currentNum+1)){
+                    currentNum+=1;
+                    currentArray += " " + currentNum;
+                    streak +=1;
+                }
+                if(longestStreak < streak){
+                    longestStreak = streak;
+                    currentLongest = currentArray;
+                }
 
-        return null;
+            }
+        }
+
+        return "Longest Set: " + currentLongest+"}";
+
     }
 }
