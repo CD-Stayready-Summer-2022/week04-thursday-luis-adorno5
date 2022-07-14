@@ -25,6 +25,6 @@ public class Solution {
             result.append(key).append(":").append(map.get(key)).append(" ");
         }
 
-        return result.toString().substring(0, result.length() - 1);
+        return result.toString().trim();
     }
 }
